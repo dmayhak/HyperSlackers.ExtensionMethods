@@ -62,6 +62,7 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [Pure]
         public static bool IsDateTime(this string value)
         {
             if (!string.IsNullOrEmpty(value))
@@ -81,6 +82,7 @@ namespace HyperSlackers.Extensions
         /// <typeparam name="T">the enum type</typeparam>
         /// <param name="value">The string to check.</param>
         /// <returns></returns>
+        [Pure]
         public static bool IsEnum<T>(this string value)
         {
             return Enum.IsDefined(typeof(T), value);
@@ -93,6 +95,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the specified input is a decimal; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsDecimal(this string value)
         {
             decimal number;
@@ -107,6 +110,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the specified input is an integer; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsInteger(this string value)
         {
             int number;
@@ -121,6 +125,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the specified input is a long; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsLong(this string value)
         {
             long number;
@@ -135,6 +140,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the specified input is a Guid; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsGuid(this string value)
         {
             Guid guid;
@@ -149,6 +155,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the specified input is numeric; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsNumeric(this string value)
         {
             double number;
@@ -163,6 +170,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the string is a valid email address; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsValidEmailAddress(this string value)
         {
             Contract.Requires<ArgumentNullException>(value != null, "value");
@@ -177,6 +185,7 @@ namespace HyperSlackers.Extensions
         /// <returns>
         /// 	<c>true</c> if the string is a valid URL; otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool IsValidUrl(this string value)
         {
             Contract.Requires<ArgumentNullException>(value != null, "value");
@@ -190,6 +199,7 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [Pure]
         public static bool IsValidIPAddress(this string value)
         {
             return Regex.IsMatch(value, @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
@@ -200,6 +210,7 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [Pure]
         public static int LengthTrimmed(this String value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -257,6 +268,7 @@ namespace HyperSlackers.Extensions
         /// <param name="wildcardPattern">The wildcard pattern to match.  Syntax matches VB's Like operator.</param>
         /// <returns>true if the string matches the supplied pattern, false otherwise.</returns>
         /// <remarks>See http://msdn.microsoft.com/en-us/library/swf8kaxw(v=VS.100).aspx</remarks>
+        [Pure]
         public static bool IsLike(this string s, string wildcardPattern)
         {
             if (s == null || String.IsNullOrEmpty(wildcardPattern)) return false;

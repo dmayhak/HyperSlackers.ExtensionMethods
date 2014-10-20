@@ -39,6 +39,7 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [Pure]
         public static bool IsValidRomanNumeral(this string value)
         {
             Contract.Requires<ArgumentException>(!value.IsNullOrWhiteSpace());
@@ -52,6 +53,7 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [Pure]
         public static int ToRomanNumeral(this string value)
         {
             Contract.Requires<ArgumentException>(!value.IsNullOrWhiteSpace());
@@ -89,6 +91,7 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [Pure]
         public static string ToRomanNumeral(this int value)
         {
             Contract.Requires<ArgumentException>(value >= 1 && value <= 3999, "Argument out of Roman numeral range."); // can only handle this range
