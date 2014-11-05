@@ -22,7 +22,7 @@ namespace HyperSlackers.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static T? ConvertTo<T>(this String value)
+        public static T? ConvertTo<T>(this string value)
             where T : struct
         {
             T? returnValue = null;
@@ -30,7 +30,6 @@ namespace HyperSlackers.Extensions
             MethodInfo neededInfo = GetMethodInfo(typeof(T), "TryParse");
             if ((neededInfo != null) && (value != null) && (value.Trim().Length > 0))
             {
-                // TODO: should this be outside the if? re-examine this whole method...
                 Type t = typeof(T);
                 if (t.IsEnum)
                 {
@@ -55,6 +54,24 @@ namespace HyperSlackers.Extensions
 
             return returnValue;
         }
+
+        // TODO: is this better or worse?
+        //public static TValue ConvertTo<TValue>(this string text)
+        //{
+        //    TValue res = default(TValue);
+        //    System.ComponentModel.TypeConverter tc = System.ComponentModel.TypeDescriptor.GetConverter(typeof(TValue));
+        //    if (tc.CanConvertFrom(text.GetType()))
+        //        res = (TValue)tc.ConvertFrom(text);
+        //    else
+        //    {
+        //        tc = System.ComponentModel.TypeDescriptor.GetConverter(text.GetType());
+        //        if (tc.CanConvertTo(typeof(TValue)))
+        //            res = (TValue)tc.ConvertTo(text, typeof(TValue));
+        //        else
+        //            throw new NotSupportedException();
+        //    }
+        //    return res;
+        //}
 
         private static MethodInfo GetMethodInfo(Type type, string method)
         {
