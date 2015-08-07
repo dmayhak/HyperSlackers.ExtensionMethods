@@ -10,7 +10,7 @@ namespace HyperSlackers.Extensions
     public static partial class ExtensionMethods
     {
         /// <summary>
-        /// Groups the elements of a sequence according to a specified firstKey selector function and rotates the unique values from the 
+        /// Groups the elements of a sequence according to a specified firstKey selector function and rotates the unique values from the
         /// secondKey selector function into multiple values in the output, and performs aggregations.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
@@ -44,9 +44,9 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Provides a Distinct method that takes a key selector lambda as parameter. The .net framework 
-        /// only provides a Distinct method that takes an instance of an implementation of IEqualityComparer<T> 
-        /// where the standard parameterless Distinct that uses the default equality comparer doesn't suffice. 
+        /// Provides a Distinct method that takes a key selector lambda as parameter. The .net framework
+        /// only provides a Distinct method that takes an instance of an implementation of IEqualityComparer<T>
+        /// where the standard parameterless Distinct that uses the default equality comparer doesn't suffice.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TKey">The type of the key.</typeparam>
@@ -78,9 +78,9 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// When building a LINQ query, you may need to involve optional filtering criteria. Avoids if statements 
-        /// when building predicates & lambdas for a query. Useful when you don't know at compile time 
-        /// whether a filter should apply. Borrowed from Andrew Robinson. http://bit.ly/1V36G9 
+        /// When building a LINQ query, you may need to involve optional filtering criteria. Avoids if statements
+        /// when building predicates & lambdas for a query. Useful when you don't know at compile time
+        /// whether a filter should apply. Borrowed from Andrew Robinson. http://bit.ly/1V36G9
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -96,9 +96,9 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// When building a LINQ query, you may need to involve optional filtering criteria. Avoids if statements 
-        /// when building predicates & lambdas for a query. Useful when you don't know at compile time 
-        /// whether a filter should apply. Borrowed from Andrew Robinson. http://bit.ly/1V36G9 
+        /// When building a LINQ query, you may need to involve optional filtering criteria. Avoids if statements
+        /// when building predicates & lambdas for a query. Useful when you don't know at compile time
+        /// whether a filter should apply. Borrowed from Andrew Robinson. http://bit.ly/1V36G9
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -148,6 +148,13 @@ namespace HyperSlackers.Extensions
             return result.ToString();
         }
 
+        /// <summary>
+        /// Joins the IEnumerable items into a string with each item delimited by separator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="separator">The separator.</param>
+        /// <returns></returns>
         public static string Join<T>(this IEnumerable<T> value, string separator)
         {
             return String.Join(separator, value);

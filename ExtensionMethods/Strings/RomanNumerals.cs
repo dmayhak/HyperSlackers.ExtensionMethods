@@ -18,18 +18,18 @@ namespace HyperSlackers.Extensions
         private const int NumberOfRomanNumeralMaps = 13;
         private static readonly Dictionary<string, int> romanNumerals = new Dictionary<string, int>(NumberOfRomanNumeralMaps)
         {
-            { "M", 1000 }, 
-            { "CM", 900 }, 
-            { "D", 500 }, 
-            { "CD", 400 }, 
-            { "C", 100 }, 
-            { "XC", 90 }, 
-            { "L", 50 }, 
-            { "XL", 40 }, 
-            { "X", 10 }, 
-            { "IX", 9 }, 
-            { "V", 5 }, 
-            { "IV", 4 }, 
+            { "M", 1000 },
+            { "CM", 900 },
+            { "D", 500 },
+            { "CD", 400 },
+            { "C", 100 },
+            { "XC", 90 },
+            { "L", 50 },
+            { "XL", 40 },
+            { "X", 10 },
+            { "IX", 9 },
+            { "V", 5 },
+            { "IV", 4 },
             { "I", 1 }
         };
 
@@ -54,7 +54,7 @@ namespace HyperSlackers.Extensions
         /// <param name="value">The value.</param>
         /// <returns></returns>
         [Pure]
-        public static int ToRomanNumeral(this string value)
+        public static int FromRomanNumeral(this string value)
         {
             Contract.Requires<ArgumentException>(!value.IsNullOrWhiteSpace());
             Contract.Requires<ArgumentException>(value.IsValidRomanNumeral());

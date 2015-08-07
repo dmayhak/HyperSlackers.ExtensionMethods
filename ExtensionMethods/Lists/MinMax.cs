@@ -24,10 +24,10 @@ namespace HyperSlackers.Extensions
         {
             if (!sequence.Any()) return null;
 
-            //get the first object with its predicate value
+            // get the first object with its predicate value
             var seed = sequence.Select(x => new { Object = x, Value = predicate(x) }).FirstOrDefault();
-            //compare against all others, replacing the accumulator with the lesser value
-            //tie goes to first object found
+            // compare against all others, replacing the accumulator with the lesser value
+            // tie goes to first object found
             return
                 sequence.Select(x => new { Object = x, Value = predicate(x) })
                     .Aggregate(seed, (acc, x) => acc.Value.CompareTo(x.Value) <= 0 ? acc : x).Object;
@@ -48,10 +48,10 @@ namespace HyperSlackers.Extensions
         {
             if (!sequence.Any()) return null;
 
-            //get the first object with its predicate value
+            // get the first object with its predicate value
             var seed = sequence.Select(x => new { Object = x, Value = predicate(x) }).FirstOrDefault();
-            //compare against all others, replacing the accumulator with the greater value
-            //tie goes to last object found
+            // compare against all others, replacing the accumulator with the greater value
+            // tie goes to last object found
             return
                 sequence.Select(x => new { Object = x, Value = predicate(x) })
                     .Aggregate(seed, (acc, x) => acc.Value.CompareTo(x.Value) > 0 ? acc : x).Object;

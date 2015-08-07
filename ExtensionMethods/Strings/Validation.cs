@@ -271,7 +271,11 @@ namespace HyperSlackers.Extensions
         [Pure]
         public static bool IsLike(this string s, string wildcardPattern)
         {
-            if (s == null || String.IsNullOrEmpty(wildcardPattern)) return false;
+            if (s == null || String.IsNullOrEmpty(wildcardPattern))
+            {
+                return false;
+            }
+
             // turn into regex pattern, and match the whole string with ^$
             var regexPattern = "^" + Regex.Escape(wildcardPattern) + "$";
 

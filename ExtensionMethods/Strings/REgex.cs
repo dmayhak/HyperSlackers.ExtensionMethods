@@ -48,9 +48,7 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Returns the matched string from the regex pattern. The
-        /// groupName is for named group match values in the form (?<name>group).
-        /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
+        /// Returns the matched string from the regex pattern.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The pattern.</param>
@@ -61,9 +59,7 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Returns the matched string from the regex pattern. The
-        /// groupName is for named group match values in the form (?<name>group).
-        /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
+        /// Returns the matched string from the regex pattern.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The pattern.</param>
@@ -75,9 +71,7 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Returns the matched string from the regex pattern. The
-        /// groupName is for named group match values in the form (?<name>group).
-        /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
+        /// Returns the matched string from the regex pattern.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The pattern.</param>
@@ -89,7 +83,7 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Returns true if there is a match from the regex pattern
+        /// Returns true if there is a match from the regex pattern.
         /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
         /// </summary>
         /// <param name="value">The value.</param>
@@ -102,8 +96,7 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Returns true if there is a match from the regex pattern
-        /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
+        /// Returns true if there is a match from the regex pattern.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The pattern.</param>
@@ -115,7 +108,6 @@ namespace HyperSlackers.Extensions
 
         /// <summary>
         /// Returns a string where matching patterns are replaced by the replacement string.
-        /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The regex pattern for matching the items to be replaced</param>
@@ -129,7 +121,6 @@ namespace HyperSlackers.Extensions
 
         /// <summary>
         /// Returns a string where matching patterns are replaced by the replacement string.
-        /// from http://stackoverflow.com/questions/271398/what-are-your-favorite-extension-methods-for-c-codeplex-com-extensionoverflow?page=5&tab=votes#tab-top
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The regex pattern for matching the items to be replaced</param>

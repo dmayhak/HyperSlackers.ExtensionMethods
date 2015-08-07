@@ -221,7 +221,7 @@ namespace HyperSlackers.Extensions
         /// <summary>
         /// Gets a DateTime representing the last day in the month of the specified date.
         /// </summary>
-        /// <param name="value">The date value</param>  
+        /// <param name="value">The date value</param>
         /// <returns></returns>
         public static DateTime LastDayOfMonth(this DateTime value)
         {
@@ -229,7 +229,7 @@ namespace HyperSlackers.Extensions
         }
 
         /// <summary>
-        /// Gets a DateTime representing the first specified day of the week 
+        /// Gets a DateTime representing the first specified day of the week
         /// following the specified date
         /// </summary>
         /// <param name="value">The date value</param>

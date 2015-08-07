@@ -12,7 +12,7 @@ namespace HyperSlackers.Extensions.Web.Mvc
     public static partial class ExtensionMethods
     {
         /// <summary>
-        /// Columns the name for a model property.
+        /// Gets the column name for a property.
         /// </summary>
         /// <typeparam name="TModel">The type of the model.</typeparam>
         /// <typeparam name="TClass">The type of the class.</typeparam>
