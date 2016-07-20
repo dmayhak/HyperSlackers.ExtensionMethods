@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +28,7 @@ namespace HyperSlackers.Extensions
         /// <returns>true/false result</returns>
         public static bool NextBool(this Random random, double probability)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             return random.NextDouble() <= probability;
         }
@@ -40,7 +40,7 @@ namespace HyperSlackers.Extensions
         /// <returns>true/false result</returns>
         public static bool NextBool(this Random random)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             return random.NextDouble() <= 0.5;
         }
@@ -53,7 +53,7 @@ namespace HyperSlackers.Extensions
         /// <returns>a random char</returns>
         public static char NextChar(this Random random, RandomCharType mode)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             switch (mode)
             {
@@ -83,7 +83,7 @@ namespace HyperSlackers.Extensions
         /// <returns>a random char</returns>
         public static char NextChar(this Random random)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             return random.NextChar(RandomCharType.AlphanumericAny);
         }
@@ -97,8 +97,8 @@ namespace HyperSlackers.Extensions
         /// <returns>a random date between dates specified</returns>
         public static DateTime NextDateTime(this Random random, DateTime minValue, DateTime maxValue)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
-            Contract.Requires<ArgumentOutOfRangeException>(minValue < maxValue);
+            Helpers.ThrowIfNull(random != null, "random");
+            Helpers.ThrowIfNull(minValue < maxValue, "minValue must be less than maxValue");
 
             return DateTime.FromOADate(random.NextDouble(minValue.ToOADate(), maxValue.ToOADate()));
         }
@@ -110,7 +110,7 @@ namespace HyperSlackers.Extensions
         /// <returns>a random date</returns>
         public static DateTime NextDateTime(this Random random)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             return random.NextDateTime(DateTime.MinValue, DateTime.MaxValue);
         }
@@ -124,8 +124,8 @@ namespace HyperSlackers.Extensions
         /// <returns>a random double</returns>
         public static double NextDouble(this Random random, double minValue, double maxValue)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
-            Contract.Requires<ArgumentOutOfRangeException>(minValue < maxValue);
+            Helpers.ThrowIfNull(random != null, "random");
+            Helpers.ThrowIfNull(minValue < maxValue, "minValue must be less than maxValue");
 
             double difference = maxValue - minValue;
             if (!double.IsInfinity(difference))
@@ -158,8 +158,8 @@ namespace HyperSlackers.Extensions
         /// <returns>a random string</returns>
         public static string NextString(this Random random, int length, RandomCharType mode)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
-            Contract.Requires<ArgumentOutOfRangeException>(length > 0);
+            Helpers.ThrowIfNull(random != null, "random");
+            Helpers.ThrowIfNull(length > 0, "length must be > 0");
 
             char[] chars = new char[length];
 
@@ -179,8 +179,8 @@ namespace HyperSlackers.Extensions
         /// <returns>a random string</returns>
         public static string NextString(this Random random, int length)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
-            Contract.Requires<ArgumentOutOfRangeException>(length > 0);
+            Helpers.ThrowIfNull(random != null, "random");
+            Helpers.ThrowIfNull(length > 0, "length must be > 0");
 
             return random.NextString(length, RandomCharType.AlphanumericAny);
         }
@@ -194,7 +194,7 @@ namespace HyperSlackers.Extensions
         /// <returns>a random timespan between specified values</returns>
         public static TimeSpan NextTimeSpan(this Random random, TimeSpan minValue, TimeSpan maxValue)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             return TimeSpan.FromMilliseconds(random.NextDouble(minValue.TotalMilliseconds, maxValue.TotalMilliseconds));
         }
@@ -206,7 +206,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static TimeSpan NextTimeSpan(this Random random)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
+            Helpers.ThrowIfNull(random != null, "random");
 
             return random.NextTimeSpan(TimeSpan.MinValue, TimeSpan.MaxValue);
         }
@@ -220,9 +220,9 @@ namespace HyperSlackers.Extensions
         /// <returns>a random item from a list</returns>
         public static T OneOf<T>(this Random random, IList<T> list)
         {
-            Contract.Requires<ArgumentNullException>(random != null, "random");
-            Contract.Requires<ArgumentNullException>(list != null, "list");
-            Contract.Requires<ArgumentException>(list.Count > 0);
+            Helpers.ThrowIfNull(random != null, "random");
+            Helpers.ThrowIfNull(list != null, "list");
+            Helpers.ThrowIfNull(list.Count > 0, "list.Count must be > 0");
 
             return list[random.Next(list.Count)];
         }

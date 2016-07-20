@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -387,8 +387,8 @@ namespace HyperSlackers.Extensions
         /// <param name="minute">Minutes</param>
         public static DateTime WithTime(this DateTime value, int hour, int minute)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(hour >= 0 && hour <= 24);
-            Contract.Requires<ArgumentOutOfRangeException>(minute >= 0 && minute <= 60);
+            Helpers.ThrowIfNull(hour >= 0 && hour <= 24, "hour not valid");
+            Helpers.ThrowIfNull(minute >= 0 && minute <= 60, "minute not valid");
 
             return WithTime(value, hour, minute, 0, 0);
         }
@@ -403,9 +403,9 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static DateTime WithTime(this DateTime value, int hour, int minute, int second)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(hour >= 0 && hour <= 24);
-            Contract.Requires<ArgumentOutOfRangeException>(minute >= 0 && minute <= 60);
-            Contract.Requires<ArgumentOutOfRangeException>(second >= 0 && second <= 60);
+            Helpers.ThrowIfNull(hour >= 0 && hour <= 24, "hour not valid");
+            Helpers.ThrowIfNull(minute >= 0 && minute <= 60, "minute not valid");
+            Helpers.ThrowIfNull(second >= 0 && second <= 60, "second not valid");
 
             return WithTime(value, hour, minute, second, 0);
         }
@@ -421,10 +421,10 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static DateTime WithTime(this DateTime value, int hour, int minute, int second, int millisecond)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(hour >= 0 && hour <= 24);
-            Contract.Requires<ArgumentOutOfRangeException>(minute >= 0 && minute <= 60);
-            Contract.Requires<ArgumentOutOfRangeException>(second >= 0 && second <= 60);
-            Contract.Requires<ArgumentOutOfRangeException>(millisecond >= 0 && millisecond < 1000);
+            Helpers.ThrowIfNull(hour >= 0 && hour <= 24, "hour not valid");
+            Helpers.ThrowIfNull(minute >= 0 && minute <= 60, "minute not valid");
+            Helpers.ThrowIfNull(second >= 0 && second <= 60, "second not valid");
+            Helpers.ThrowIfNull(millisecond >= 0 && millisecond < 1000, "millisecond not valid");
 
             return new DateTime(value.Year, value.Month, value.Day, hour, minute, second, millisecond);
         }

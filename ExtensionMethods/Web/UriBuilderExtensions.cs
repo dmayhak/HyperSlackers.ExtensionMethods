@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -22,9 +22,9 @@ namespace HyperSlackers.Extensions
         /// <returns>The final full query string.</returns>
         public static string AddQueryParam(this UriBuilder builder, string parameterName, string value)
         {
-            Contract.Requires<ArgumentNullException>(builder != null, "builder");
-            Contract.Requires<ArgumentException>(!parameterName.IsNullOrWhiteSpace());
-            Contract.Requires<ArgumentException>(!value.IsNullOrWhiteSpace());
+            Helpers.ThrowIfNull(builder != null, "builder");
+            Helpers.ThrowIfNull(!parameterName.IsNullOrWhiteSpace(), "parameterName");
+            Helpers.ThrowIfNull(!value.IsNullOrWhiteSpace(), "value");
 
             if (builder.Query.Length == 0)
             {

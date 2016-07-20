@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,13 +18,12 @@ namespace HyperSlackers.Extensions.IO
         /// <returns></returns>
         public static IEnumerable<FileInfo> GetFilesByExtensions(this DirectoryInfo directoryInfo, params string[] extensions)
         {
-            Contract.Requires<ArgumentNullException>(directoryInfo != null, "directoryInfo");
-            Contract.Requires<ArgumentNullException>(extensions != null, "extensions");
-            Contract.Ensures(Contract.Result<IEnumerable<FileInfo>>() != null);
+            Helpers.ThrowIfNull(directoryInfo != null, "directoryInfo");
+            Helpers.ThrowIfNull(extensions != null, "extensions");
 
             var allowedExtensions = new HashSet<string>(extensions, StringComparer.OrdinalIgnoreCase);
 
-            return directoryInfo.EnumerateFiles().Where(f => allowedExtensions.Contains(f.Extension)); 
+            return directoryInfo.EnumerateFiles().Where(f => allowedExtensions.Contains(f.Extension));
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace HyperSlackers.Extensions.IO
         /// <param name="value">The value.</param>
         public static void CreateDirectory(this DirectoryInfo value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             if (value.Parent != null)
             {
@@ -54,8 +53,8 @@ namespace HyperSlackers.Extensions.IO
         /// <returns>Number of files that have been deleted.</returns>
         public static int DeleteFiles(this DirectoryInfo value, string searchPattern)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(searchPattern));
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(!String.IsNullOrWhiteSpace(searchPattern), "searchPattern");
 
             return DeleteFiles(value, searchPattern, false);
         }
@@ -73,8 +72,8 @@ namespace HyperSlackers.Extensions.IO
         /// </remarks>
         public static int DeleteFiles(this DirectoryInfo value, string searchPattern, bool includeSubdirectories)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(searchPattern));
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(!String.IsNullOrWhiteSpace(searchPattern), "searchPattern");
 
             int filesDeleted = 0;
             foreach (FileInfo fi in value.GetFiles(searchPattern, includeSubdirectories ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly))
@@ -93,7 +92,7 @@ namespace HyperSlackers.Extensions.IO
         /// <returns>The size in bytes of all files</returns>
         public static long GetSize(this DirectoryInfo value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             return GetSize(value, true);
         }
@@ -106,7 +105,7 @@ namespace HyperSlackers.Extensions.IO
         /// <returns>The size in bytes of all files</returns>
         public static long GetSize(this DirectoryInfo value, bool includeSubdirectories)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             long size = 0;
 

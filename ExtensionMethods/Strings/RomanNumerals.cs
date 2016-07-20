@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -39,10 +39,9 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        [Pure]
         public static bool IsValidRomanNumeral(this string value)
         {
-            Contract.Requires<ArgumentException>(!value.IsNullOrWhiteSpace());
+            Helpers.ThrowIfNull(!value.IsNullOrWhiteSpace(), "value");
 
             return validRomanNumeral.IsMatch(value);
         }
@@ -53,11 +52,10 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        [Pure]
         public static int FromRomanNumeral(this string value)
         {
-            Contract.Requires<ArgumentException>(!value.IsNullOrWhiteSpace());
-            Contract.Requires<ArgumentException>(value.IsValidRomanNumeral());
+            Helpers.ThrowIfNull(!value.IsNullOrWhiteSpace(), "value");
+            Helpers.ThrowIfNull(value.IsValidRomanNumeral(), "Argument not a valid Roman numeral.");
 
             value = value.ToUpperInvariant().Trim();
 
@@ -91,10 +89,9 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        [Pure]
         public static string ToRomanNumeral(this int value)
         {
-            Contract.Requires<ArgumentException>(value >= 1 && value <= 3999, "Argument out of Roman numeral range."); // can only handle this range
+            Helpers.ThrowIfNull(value >= 1 && value <= 3999, "Argument out of Roman numeral range."); // can only handle this range
 
             var sb = new StringBuilder(15); // maximum length for roman numeral string
 

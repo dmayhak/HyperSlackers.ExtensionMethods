@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -72,7 +72,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static System.Collections.Specialized.NameValueCollection ParseQueryString(this string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             return System.Web.HttpUtility.ParseQueryString(value);
         }
@@ -94,11 +94,8 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The string value.</param>
         /// <returns></returns>
-        [Pure]
         public static string ReplaceNewLineWithBr(this string value)
         {
-            Contract.Ensures(!String.IsNullOrEmpty(Contract.Result<string>()));
-
             if (value.IsNullOrEmpty())
             {
                 return string.Empty;

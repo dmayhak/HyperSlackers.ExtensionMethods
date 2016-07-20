@@ -199,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileSystem\FileInfoExtensions.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Image\Color.cs" />
     <Compile Include="Image\BitmapToGrayScale.cs" />
     <Compile Include="Lists\IDictionaryExtensions.cs" />

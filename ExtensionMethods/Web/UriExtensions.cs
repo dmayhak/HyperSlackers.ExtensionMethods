@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static string FileExt(this Uri value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             string[] parts = value.FileName().Split('.');
             string fileName = "";
@@ -40,7 +40,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static string FileName(this Uri value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             string[] parts = value.AbsoluteUri.Split('/');
             string fileName = "";

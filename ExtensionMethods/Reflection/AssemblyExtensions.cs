@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -18,8 +18,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static IEnumerable<Type> GetLoadableTypes(this Assembly assembly)
         {
-            Contract.Requires<ArgumentNullException>(assembly != null, "assembly");
-            Contract.Ensures(Contract.Result<IEnumerable<Type>>() != null);
+            Helpers.ThrowIfNull(assembly != null, "assembly");
 
             try
             {

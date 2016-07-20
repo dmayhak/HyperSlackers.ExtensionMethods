@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace HyperSlackers.Extensions.Drawing
         /// <returns>The resized image</returns>
         public static Image Resize(this Image value, int percentage)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             int width = (int)(value.Width * percentage);
             int height = (int)(value.Height * percentage);

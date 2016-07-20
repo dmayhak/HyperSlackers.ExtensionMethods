@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -21,8 +21,8 @@ namespace HyperSlackers.Extensions
         /// <exception cref="System.InvalidOperationException">Enum type mismatch</exception>
         public static bool IncludesAll(this Enum value, Enum flags)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(flags != null, "flags");
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(flags != null, "flags");
 
             if (value.GetType() != flags.GetType())
             {
@@ -46,8 +46,8 @@ namespace HyperSlackers.Extensions
         /// <exception cref="System.InvalidOperationException">Enum type mismatch</exception>
         public static bool IncludesAny(this Enum value, Enum flags)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(flags != null, "flags");
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(flags != null, "flags");
 
             if (value.GetType() != flags.GetType())
             {

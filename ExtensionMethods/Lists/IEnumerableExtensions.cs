@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +24,8 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
-            Contract.Requires<ArgumentNullException>(firstKeySelector != null, "firstKeySelector");
+            Helpers.ThrowIfNull(source != null, "source");
+            Helpers.ThrowIfNull(firstKeySelector != null, "firstKeySelector");
 
             var retVal = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
@@ -55,8 +55,8 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static IEnumerable<T> Distinct<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
-            Contract.Requires<ArgumentNullException>(keySelector != null, "keySelector");
+            Helpers.ThrowIfNull(source != null, "source");
+            Helpers.ThrowIfNull(keySelector != null, "keySelector");
 
             return source.GroupBy(keySelector).Select(grps => grps).Select(e => e.First());
         }
@@ -69,7 +69,7 @@ namespace HyperSlackers.Extensions
         /// <param name="action">The action.</param>
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
+            Helpers.ThrowIfNull(source != null, "source");
 
             foreach (var item in source)
             {

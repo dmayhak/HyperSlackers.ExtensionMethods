@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -20,8 +20,8 @@ namespace HyperSlackers.Extensions.Web.Mvc
         /// <param name="expression">The expression representing what to remove.</param>
         public static void Remove<TViewModel>(this ModelStateDictionary value, Expression<Func<TViewModel, object>> expression)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(expression != null, "expression");
 
             value.Remove(GetPropertyName(expression));
         }
@@ -33,8 +33,7 @@ namespace HyperSlackers.Extensions.Web.Mvc
         /// <returns>the property name</returns>
         private static string GetPropertyName(this Expression expression)
         {
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Ensures(Contract.Result<string>() != null);
+            Helpers.ThrowIfNull(expression != null, "expression");
 
             var e = expression;
 

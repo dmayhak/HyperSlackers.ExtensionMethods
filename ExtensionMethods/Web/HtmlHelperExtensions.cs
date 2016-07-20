@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -23,10 +23,9 @@ namespace HyperSlackers.Extensions.Web.Mvc
         /// <returns></returns>
         public static MvcHtmlString ColumnNameFor<TModel, TClass, TProperty>(this HtmlHelper<TModel> helper, IEnumerable<TClass> model, Expression<Func<TClass, TProperty>> expression)
         {
-            Contract.Requires<ArgumentNullException>(helper != null, "helper");
-            Contract.Requires<ArgumentNullException>(model != null, "model");
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Ensures(Contract.Result<MvcHtmlString>() != null);
+            Helpers.ThrowIfNull(helper != null, "helper");
+            Helpers.ThrowIfNull(model != null, "model");
+            Helpers.ThrowIfNull(expression != null, "expression");
 
             var name = ExpressionHelper.GetExpressionText(expression);
             string fullName;

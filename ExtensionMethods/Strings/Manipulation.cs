@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -21,11 +21,8 @@ namespace HyperSlackers.Extensions
         /// <param name="splitOn">The char to split on (deraults to ','.</param>
         /// <param name="trimValues">if set to <c>true</c> (the default) trims the split values.</param>
         /// <returns></returns>
-        [Pure]
         public static string[] SplitString(this string value, char splitOn = ',', bool trimValues = true)
         {
-            Contract.Ensures(Contract.Result<string[]>() != null);
-
             if (value == null)
             {
                 return new string[0];
@@ -45,11 +42,8 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The string to format.</param>
         /// <returns></returns>
-        [Pure]
         public static string SpaceOnUpperCase(this string value)
         {
-            Contract.Ensures(Contract.Result<string>() != null);
-
             if (value.IsNullOrWhiteSpace())
             {
                 return string.Empty;
@@ -63,11 +57,8 @@ namespace HyperSlackers.Extensions
         /// </summary>
         /// <param name="value">The string to split.</param>
         /// <returns></returns>
-        [Pure]
         private static string[] SplitOnUpperCase(this string value)
         {
-            Contract.Ensures(Contract.Result<string[]>() != null);
-
             if (value.IsNullOrWhiteSpace())
             {
                 return new[] { string.Empty };
@@ -231,7 +222,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static string RightAfter(this String value, string delimiter)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(delimiter));
+            Helpers.ThrowIfNull(!String.IsNullOrEmpty(delimiter), "delimiter");
 
             if (value.IsNullOrEmpty())
             {

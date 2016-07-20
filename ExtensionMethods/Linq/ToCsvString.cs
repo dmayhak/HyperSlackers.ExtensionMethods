@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ namespace HyperSlackers.Extensions
         /// <returns>The CSV string</returns>
         public static string ToCsvString(this IOrderedQueryable value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             return ToCsvString(value, "|", string.Empty);
         }
@@ -29,8 +29,8 @@ namespace HyperSlackers.Extensions
         /// <returns>The CSV string</returns>
         public static string ToCsvString(this IOrderedQueryable value, string delimiter)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(delimiter != null, "delimiter");
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(delimiter != null, "delimiter");
 
             return ToCsvString(value, delimiter, string.Empty);
         }
@@ -44,9 +44,9 @@ namespace HyperSlackers.Extensions
         /// <returns>The CSV string</returns>
         public static string ToCsvString(this IOrderedQueryable value, string delimiter, string nullValue)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(delimiter != null, "delimiter");
-            Contract.Requires<ArgumentNullException>(nullValue != null, "nullValue");
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(delimiter != null, "delimiter");
+            Helpers.ThrowIfNull(nullValue != null, "nullValue");
 
             StringBuilder csv = new StringBuilder();
 

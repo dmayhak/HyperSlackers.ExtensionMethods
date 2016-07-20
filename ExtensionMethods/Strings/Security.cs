@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -25,8 +25,8 @@ namespace HyperSlackers.Extensions
         /// <exception cref="ArgumentNullException">Occurs when value and/or key is null or empty.</exception>
         public static string Decrypt(this string value, string key)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(value));
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(key));
+            Helpers.ThrowIfNull(!String.IsNullOrWhiteSpace(value), "value");
+            Helpers.ThrowIfNull(!String.IsNullOrWhiteSpace(key), "key");
 
             string result = null;
 
@@ -64,8 +64,8 @@ namespace HyperSlackers.Extensions
         /// <exception cref="ArgumentNullException">Occurs when value and/or key is null or empty.</exception>
         public static string Encrypt(this string value, string key)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(value));
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(key));
+            Helpers.ThrowIfNull(!String.IsNullOrWhiteSpace(value), "value");
+            Helpers.ThrowIfNull(!String.IsNullOrWhiteSpace(key), "key");
 
             System.Security.Cryptography.CspParameters cspp = new System.Security.Cryptography.CspParameters();
             cspp.KeyContainerName = key;
@@ -87,7 +87,7 @@ namespace HyperSlackers.Extensions
         /// <returns></returns>
         public static string MD5(this string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            Helpers.ThrowIfNull(value != null, "value");
 
             byte[] bytes = Encoding.UTF8.GetBytes(value);
             StringBuilder builder = new StringBuilder();

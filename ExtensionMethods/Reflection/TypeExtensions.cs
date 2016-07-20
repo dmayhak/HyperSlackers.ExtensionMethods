@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -18,8 +18,8 @@ namespace HyperSlackers.Extensions
         /// <param name="value">The type to determine for whether it derives from <paramref name="baseType"/>.</param>
         public static bool IsSubclassOfRawGeneric(this Type value, Type baseType)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(baseType != null, "baseType");
+            Helpers.ThrowIfNull(value != null, "value");
+            Helpers.ThrowIfNull(baseType != null, "baseType");
 
             while (value != typeof(object))
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +22,8 @@ namespace HyperSlackers.Extensions
         /// <exception cref="System.ArgumentNullException">input</exception>
         public static bool IsIn<T>(this T input, params T[] list)
         {
-            Contract.Requires<ArgumentNullException>(input != null, "input");
-            Contract.Requires<ArgumentNullException>(list != null, "list");
+            Helpers.ThrowIfNull(input != null, "input");
+            Helpers.ThrowIfNull(list != null, "list");
 
             return list.Contains(input);
         }

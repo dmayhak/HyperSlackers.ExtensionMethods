@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +17,9 @@ namespace HyperSlackers.Extensions
         /// <param name="args">The args.</param>
         public static StringBuilder AppendLine(this StringBuilder builder, string format, params object[] args)
         {
-            Contract.Requires<ArgumentNullException>(builder != null, "builder");
-            Contract.Requires<ArgumentNullException>(format != null, "format");
-            Contract.Requires<ArgumentNullException>(args != null, "args");
+            Helpers.ThrowIfNull(builder != null, "builder");
+            Helpers.ThrowIfNull(format != null, "format");
+            Helpers.ThrowIfNull(args != null, "args");
 
             builder.AppendLine(format.FormatWith(args));
 
